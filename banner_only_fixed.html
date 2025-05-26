@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Banner Tetap Sahaja</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-color: #f5f5f5;
+    }
+
+    .bottom-banner-img {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+    }
+
+    .content {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #333;
+      font-family: sans-serif;
+      font-size: 18px;
+      padding-bottom: 80px; /* make space for banner */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    <!-- Optional: Any central content here -->
+    <p>Welcome to the Hajj Info App</p>
+  </div>
+
+  <img class="bottom-banner-img" src="BottomPija.png" alt="Banner Tetap" />
+
+</body>
+</html>

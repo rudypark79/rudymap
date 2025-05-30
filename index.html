@@ -56,7 +56,7 @@
       <button onclick="showMap()">Show Map</button>
       <br>
       <img id="preview" src="" alt="Preview">
-      <iframe id="map" style="width:100%; height:300px; display:none;" loading="lazy" allowfullscreen></iframe>
+      <iframe id="map" style="width:100%; height:300px; display:none;" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 
@@ -79,8 +79,9 @@
     };
 
     const mapEmbed = {
-      "stu001": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15960.290702904328!2d101.69890589534133!3d2.9356738348024747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdcbd0a6e0e12b%3A0x7e071f30e70dcf5b!2sKajang!5e0!3m2!1sen!2smy!4v1716270000000",
-      "stu002": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15960.150279457202!2d101.71056345116696!3d2.93975946347162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdca140441fbb5%3A0xe9cfb7a7eaf0a402!2sBangi%2C%20Selangor!5e0!3m2!1sen!2smy!4v1716271000000"
+      "stu001": `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4726.50412535319!2d101.69633097567609!3d2.935470254427565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb63ddd1208df%3A0x7fed7039e84f0b29!2sKementerian%20Sains%2C%20Teknologi%20dan%20Inovasi!5e1!3m2!1sms!2smy!4v1748590147361!5m2!1sms!2smy`,
+
+      "stu002": `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4726.486921408828!2d101.7080421756762!3d2.9395344544039745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdc9dfc608d945%3A0xf9cebccf83351f06!2sAlamanda%20Shopping%20Centre!5e1!3m2!1sms!2smy!4v1748590256900!5m2!1sms!2smy`
     };
 
     let currentID = "";

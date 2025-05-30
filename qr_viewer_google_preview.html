@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Profile Viewer - Fixed with Google Preview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    #main {
+      flex: 1;
+      overflow-y: auto;
+      padding-bottom: 60px;
+    }
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+    }
+    #preview {
+      max-width: 100%;
+      margin: 10px 0;
+      display: none;
+    }
+    #banner {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 50px;
+      background: #007bff;
+      color: white;
+      text-align: center;
+      line-height: 50px;
+      font-weight: bold;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="main">
+    <h2 style="text-align:center;">QR Profile Viewer</h2>
+
+    <iframe id="pdf-viewer" src=""></iframe>
+
+    <div style="text-align:center;">
+      <button onclick="showImage()">Show Image</button>
+      <button onclick="showMap()">Show Map</button>
+      <br>
+      <img id="preview" src="" alt="Preview">
+      <iframe id="map" style="width:100%; height:300px; display:none;" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <div id="banner">📌 Fixed Banner - Always Visible</div>
+
+  <script>
+    const pdfViewer = document.getElementById("pdf-viewer");
+    const imagePreview = document.getElementById("preview");
+    const mapIframe = document.getElementById("map");
+
+    const pdfMap = {
+      "stu001": "https://drive.google.com/file/d/1jzyi_1yO_21pnqk0yFEJ_lZpm5g8WKJZ/preview",
+      "stu002": "https://drive.google.com/file/d/17yaDJDUMc3rbbManm3Z3mnK7EfKqFZtu/preview"
+    };
+
+    const imageMap = {
+      "stu001": "https://drive.google.com/uc?export=view&id=1iFhKv4ZaIxhd8PJk3E2lRsglTRGeMJ87",
+      "stu002": "https://drive.google.com/uc?export=view&id=1GLq4N2arxMJSSMO3XdqRjQqD8YX4VH9P"
+    };
+
+    const mapEmbed = {
+      "stu001": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4726.50412535319!2d101.69633097567609!3d2.935470254427565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb63ddd1208df%3A0x7fed7039e84f0b29!2sKementerian%20Sains%2C%20Teknologi%20dan%20Inovasi!5e1!3m2!1sms!2smy!4v1748590147361!5m2!1sms!2smy",
+      "stu002": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4726.486921408828!2d101.7080421756762!3d2.9395344544039745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdc9dfc608d945%3A0xf9cebccf83351f06!2sAlamanda%20Shopping%20Centre!5e1!3m2!1sms!2smy!4v1748590256900!5m2!1sms!2smy"
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const docID = urlParams.get("doc");
+
+    if (docID && pdfMap[docID]) {
+      pdfViewer.src = pdfMap[docID];
+      window.currentID = docID;
+    } else {
+      document.getElementById("pdf-viewer").outerHTML = "<p style='text-align:center;'>Invalid or missing QR parameter (?doc=stu001)</p>";
+    }
+
+    function showImage() {
+      if (imageMap[currentID]) {
+        imagePreview.src = imageMap[currentID];
+        imagePreview.style.display = 'block';
+        mapIframe.style.display = 'none';
+      }
+    }
+
+    function showMap() {
+      if (mapEmbed[currentID]) {
+        mapIframe.src = mapEmbed[currentID];
+        mapIframe.style.display = 'block';
+        imagePreview.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

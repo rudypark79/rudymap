@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,11 +57,11 @@
       <button onclick="showMap()">Show Map</button>
       <br>
       <img id="preview" src="" alt="Preview">
-      <iframe id="map" style="width:100%; height:300px; display:none;" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe id="map" style="width:100%; height:300px; display:none;" loading="lazy" allowfullscreen></iframe>
     </div>
   </div>
 
-  <div id="banner">📌 This is a fixed banner</div>
+  <div id="banner">This is a banner</div>
 
   <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
   <script>
@@ -69,37 +70,32 @@
     const mapIframe = document.getElementById("map");
 
     const pdfMap = {
-      "stu001": "https://drive.google.com/viewerng/viewer?embedded=true&url=https://drive.google.com/uc?export=download&id=1jzyi_1yO_21pnqk0yFEJ_lZpm5g8WKJZ",
-      "stu002": "https://drive.google.com/viewerng/viewer?embedded=true&url=https://drive.google.com/uc?export=download&id=17yaDJDUMc3rbbManm3Z3mnK7EfKqFZtu"
+      "stu001": "https://drive.google.com/viewerng/viewer?embedded=true&url=https://drive.google.com/uc?export=download&id=PDF_FILE_ID_1",
+      "stu002": "https://drive.google.com/viewerng/viewer?embedded=true&url=https://drive.google.com/uc?export=download&id=PDF_FILE_ID_2"
     };
 
     const imageMap = {
-      "stu001": "https://drive.google.com/uc?export=view&id=1iFhKv4ZaIxhd8PJk3E2lRsglTRGeMJ87",
-      "stu002": "https://drive.google.com/uc?export=view&id=1GLq4N2arxMJSSMO3XdqRjQqD8YX4VH9P"
+      "stu001": "https://drive.google.com/uc?export=view&id=IMAGE_ID_1",
+      "stu002": "https://drive.google.com/uc?export=view&id=IMAGE_ID_2"
     };
 
     const mapEmbed = {
-      "stu001": `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4726.50412535319!2d101.69633097567609!3d2.935470254427565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdb63ddd1208df%3A0x7fed7039e84f0b29!2sKementerian%20Sains%2C%20Teknologi%20dan%20Inovasi!5e1!3m2!1sms!2smy!4v1748590147361!5m2!1sms!2smy`,
-
-      "stu002": `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4726.486921408828!2d101.7080421756762!3d2.9395344544039745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdc9dfc608d945%3A0xf9cebccf83351f06!2sAlamanda%20Shopping%20Centre!5e1!3m2!1sms!2smy!4v1748590256900!5m2!1sms!2smy`
+      "stu001": "https://www.google.com/maps/embed?pb=MAP_ID_1",
+      "stu002": "https://www.google.com/maps/embed?pb=MAP_ID_2"
     };
 
     let currentID = "";
 
     function showImage() {
-      if (imageMap[currentID]) {
-        imagePreview.src = imageMap[currentID];
-        imagePreview.style.display = 'block';
-        mapIframe.style.display = 'none';
-      }
+      imagePreview.src = imageMap[currentID];
+      imagePreview.style.display = 'block';
+      mapIframe.style.display = 'none';
     }
 
     function showMap() {
-      if (mapEmbed[currentID]) {
-        mapIframe.src = mapEmbed[currentID];
-        mapIframe.style.display = 'block';
-        imagePreview.style.display = 'none';
-      }
+      mapIframe.src = mapEmbed[currentID];
+      mapIframe.style.display = 'block';
+      imagePreview.style.display = 'none';
     }
 
     function onScanSuccess(decodedText) {

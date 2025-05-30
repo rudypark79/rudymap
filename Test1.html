@@ -53,24 +53,26 @@
 </head>
 <body>
 
-  <div class="pdf-container">
-    <iframe id="pdfViewer" src="https://example.com/sample.pdf"></iframe>
-    <div class="interactive-section">
-      <button onclick="showImage()">Show Image</button>
-      <button onclick="showMap()">Show Map</button>
-      <div id="contentDisplay"></div>
-    </div>
+<div class="pdf-container">
+  <!-- Embed Google Drive PDF -->
+  <iframe id="pdfViewer" src="https://drive.google.com/viewerng/viewer?embedded=true&url=https://drive.google.com/uc?export=download&id=1jzyi_1yO_21pnqk0yFEJ_lZpm5g8WKJZ"></iframe>
+
+  <div class="interactive-section">
+    <button onclick="showImage()">Show Image</button>
+    <button onclick="showMap()">Show Map</button>
+    <div id="contentDisplay"></div>
   </div>
+</div>
 
   <div class="fixed-banner">
     📌 This is a fixed banner. It stays visible!
   </div>
 
-  <script>
-    function showImage() {
-      document.getElementById('contentDisplay').innerHTML =
-        '<img src="https://via.placeholder.com/300x200" alt="Sample Image" style="margin-top:10px; max-width: 100%;">';
-    }
+<script>
+  function showImage() {
+    document.getElementById('contentDisplay').innerHTML =
+      '<img src="https://drive.google.com/uc?export=view&id=1iFhKv4ZaIxhd8PJk3E2lRsglTRGeMJ87" alt="Google Drive Image" style="margin-top:10px; max-width: 100%;">';
+  }
 
     function showMap() {
       document.getElementById('contentDisplay').innerHTML =

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +60,7 @@
     </div>
   </div>
 
-  <div id="banner">This is a banner</div>
+  <div id="banner">📌 This is a fixed banner</div>
 
   <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
   <script>
@@ -80,22 +79,26 @@
     };
 
     const mapEmbed = {
-      "stu001": "https://www.google.com/maps/embed?pb=2.9356738348024747, 101.69890589534133",
-      "stu002": "https://www.google.com/maps/embed?pb=2.93975946347162, 101.71056345116696"
+      "stu001": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15960.290702904328!2d101.69890589534133!3d2.9356738348024747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdcbd0a6e0e12b%3A0x7e071f30e70dcf5b!2sKajang!5e0!3m2!1sen!2smy!4v1716270000000",
+      "stu002": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15960.150279457202!2d101.71056345116696!3d2.93975946347162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cdca140441fbb5%3A0xe9cfb7a7eaf0a402!2sBangi%2C%20Selangor!5e0!3m2!1sen!2smy!4v1716271000000"
     };
 
     let currentID = "";
 
     function showImage() {
-      imagePreview.src = imageMap[currentID];
-      imagePreview.style.display = 'block';
-      mapIframe.style.display = 'none';
+      if (imageMap[currentID]) {
+        imagePreview.src = imageMap[currentID];
+        imagePreview.style.display = 'block';
+        mapIframe.style.display = 'none';
+      }
     }
 
     function showMap() {
-      mapIframe.src = mapEmbed[currentID];
-      mapIframe.style.display = 'block';
-      imagePreview.style.display = 'none';
+      if (mapEmbed[currentID]) {
+        mapIframe.src = mapEmbed[currentID];
+        mapIframe.style.display = 'block';
+        imagePreview.style.display = 'none';
+      }
     }
 
     function onScanSuccess(decodedText) {

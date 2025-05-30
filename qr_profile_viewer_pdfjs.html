@@ -3,65 +3,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>QR Profile Viewer - FINAL</title>
+  <title>QR Profile Viewer - PDF.js Auto-Fit</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
-    #main {
-      flex: 1;
-      overflow-y: auto;
-      padding-bottom: 60px;
-    }
-    iframe {
-      width: 100%;
-      height: 400px;
-      border: none;
-    }
-    #preview {
-      max-width: 100%;
-      margin: 10px 0;
-      display: none;
-    }
-    #banner {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      height: 50px;
-      background: #007bff;
-      color: white;
-      text-align: center;
-      line-height: 50px;
-      font-weight: bold;
-    }
-    button {
-      margin: 10px;
-      padding: 10px 20px;
-    }
+    body { margin: 0; font-family: sans-serif; display: flex; flex-direction: column; height: 100vh; }
+    #main { flex: 1; overflow-y: auto; padding-bottom: 60px; }
+    iframe { width: 100%; height: 600px; border: none; }
+    #preview { max-width: 100%; margin: 10px 0; display: none; }
+    #banner { position: fixed; bottom: 0; width: 100%; height: 50px; background: #007bff; color: white; text-align: center; line-height: 50px; font-weight: bold; }
+    button { margin: 10px; padding: 10px 20px; }
   </style>
 </head>
 <body>
 
   <div id="main">
-    <h2 style="text-align:center;">QR Profile Viewer</h2>
-
+    <h2 style="text-align:center;">QR Profile Viewer (Auto-Fit PDF)</h2>
     <iframe id="pdf-viewer" src=""></iframe>
-
     <div style="text-align:center;">
       <button onclick="showImage()">Show Image</button>
       <button onclick="showMap()">Show Map</button>
       <br>
       <img id="preview" src="" alt="Preview">
-      <iframe id="map" style="width:100%; height:300px; display:none;" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe id="map" style="width:100%; height:300px; display:none;" loading="lazy" allowfullscreen></iframe>
     </div>
   </div>
 
-  <div id="banner">📌 Fixed Banner - Always Visible</div>
+  <div id="banner">📌 Fixed Banner - PDF.js Auto-Fit Enabled</div>
 
   <script>
     const pdfViewer = document.getElementById("pdf-viewer");
@@ -69,13 +36,13 @@
     const mapIframe = document.getElementById("map");
 
     const pdfMap = {
-      "stu001": "https://drive.google.com/file/d/1jzyi_1yO_21pnqk0yFEJ_lZpm5g8WKJZ/preview",
-      "stu002": "https://drive.google.com/file/d/17yaDJDUMc3rbbManm3Z3mnK7EfKqFZtu/preview"
+      "stu001": "https://rudypark79.github.io/rudymap/stu001.pdf",
+      "stu002": "https://rudypark79.github.io/rudymap/stu002.pdf"
     };
 
     const imageMap = {
-      "stu001": "https://drive.google.com/uc?export=view&id=1iFhKv4ZaIxhd8PJk3E2lRsglTRGeMJ87",
-      "stu002": "https://drive.google.com/uc?export=view&id=1GLq4N2arxMJSSMO3XdqRjQqD8YX4VH9P"
+      "stu001": "stu001.jpg",
+      "stu002": "stu002.jpg"
     };
 
     const mapEmbed = {
@@ -87,7 +54,8 @@
     const docID = urlParams.get("doc");
 
     if (docID && pdfMap[docID]) {
-      pdfViewer.src = pdfMap[docID];
+      const encodedPDF = encodeURIComponent(pdfMap[docID]);
+      pdfViewer.src = `https://mozilla.github.io/pdf.js/web/viewer.html?file=${encodedPDF}#zoom=page-width`;
       window.currentID = docID;
     } else {
       document.getElementById("pdf-viewer").outerHTML = "<p style='text-align:center;'>Invalid or missing QR parameter (?doc=stu001)</p>";
